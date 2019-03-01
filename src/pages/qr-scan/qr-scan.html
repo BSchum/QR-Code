@@ -20,7 +20,7 @@
   <button ion-button (click)="Scan()">Scan</button>
   <div> 
   </div>
-  <input type="file"  (change)="ScanViaImage($event)" accept="image/*">
+  <input type="file" (change)="ScanViaImage($event)" accept="image/*">
   <div>Resultat du QrCode scanné via Image: {{ text }} </div>
   <div>Resultat du QrCode scanné via Camera: {{ scannedQrCode }} </div>
 </ion-content>

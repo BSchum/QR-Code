@@ -32,21 +32,23 @@ export class QrScanPage {
 
   public ScanViaImage(event){
     const file = event.target.files[0];
-    const reader = new FileReader();
-    //On set la fonction du fileReader
-    reader.onloadend = (evt) => {
-      var target: any = evt.currentTarget;
-      var image = new Image();
+    if(file != undefined){
+      const reader = new FileReader();
+      //On set la fonction du fileReader
+      reader.onloadend = (evt) => {
+        var target: any = evt.currentTarget;
+        var image = new Image();
 
-      //On set la callback de l'image pour avoir le resultat
-      image.onload = () => {
-        var QrDecoder = new jsqrcode();
-        this.text = QrDecoder.decode(image);
-        console.log(this.text);
-      };
-      //Va appeller image.onload
-      image.src = target.result;
+        //On set la callback de l'image pour avoir le resultat
+        image.onload = () => {
+          var QrDecoder = new jsqrcode();
+          this.text = QrDecoder.decode(image);
+          console.log(this.text);
+        };
+        //Va appeller image.onload
+        image.src = target.result;
+      }
+      reader.readAsDataURL(file);
     }
-    reader.readAsDataURL(file);
   }
 }
