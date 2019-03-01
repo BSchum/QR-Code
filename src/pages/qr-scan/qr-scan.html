@@ -1,0 +1,26 @@
+<!--
+  Generated template for the QrScanPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>QrScan</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <button ion-button (click)="Scan()">Scan</button>
+  <div> 
+  </div>
+  <input type="file"  (change)="ScanViaImage($event)" accept="image/*">
+  <div>Resultat du QrCode scanné via Image: {{ text }} </div>
+  <div>Resultat du QrCode scanné via Camera: {{ scannedQrCode }} </div>
+</ion-content>

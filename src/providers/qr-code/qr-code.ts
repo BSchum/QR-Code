@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import QRCode from 'qrcode';
+
 
 /*
   Generated class for the QrCodeProvider provider.
@@ -10,13 +12,20 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class QrCodeProvider {
 
+  
+  public generatedQrCode: string;
   constructor(public http: HttpClient) {
-    console.log('Hello QrCodeProvider Provider');
+    this.generatedQrCode = "";
   }
 
-  generate(text: string): Promise<string> {
-    //TODO: Code this
-    return Promise.resolve('');
+  public Generate(code: string) {
+    const self = this;
+    QRCode.toDataURL(code, { errorCorrectionLevel: 'H' }, function (err, url) {
+      self.generatedQrCode = url;
+    });
   }
-
+  
+  public isGenerated(){
+    return this.generatedQrCode !== "";
+  }
 }
